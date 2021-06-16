@@ -1,15 +1,12 @@
-
 import java.util.*;
 import java.io.*;
-
-
 
 public class FilesSS {
 	static Scanner s = new Scanner(System.in);
 	
 	 static void MainOptions() {
 		 
-		 System.out.println("[list]  show the files that you have.\n[sch]  search for a file name in the folder.\n[adf]  add a file to the folder.\n[del]  delete a file from the folder.\n");
+		 System.out.println("---------------------------\n[list] show the files that you have.\n[sch]  search for a file name in the folder.\n[adf]  add a file to the folder.\n[del]  delete a file from the folder.\n[exit] Close the program.\n");
 		 String in;
 		 in = s.nextLine();
 		 switch(in) {
@@ -26,7 +23,8 @@ public class FilesSS {
 		 case "del":
 		 DeleteFile();break;
 		 
-		 //========
+		 case "exit":
+		 System.exit(0);
 		 
 		 default:  System.out.println("Invaild input try again\n"); MainOptions();break;
 		 
@@ -56,17 +54,15 @@ public class FilesSS {
 			e.printStackTrace();
 		 }
 		 
-		 
-
-		 
 	 }
 	 static void ListFiles() {
 		 
+		 System.out.println("The files in the folder:\n");
 		 Collections.sort(Main.Folder);
 		 for(int i=0;i< Main.Folder.size();i++) {
 			 System.out.println(Main.Folder.get(i));
 			 }
-		 
+		 System.out.println();
 		 MainOptions();
 	 }
 	 static void SearchFile() {
@@ -75,7 +71,7 @@ public class FilesSS {
 		 an = s.nextLine();
 		 for(int i=0;i<Main.Folder.size();i++) {
 			 if(an.equals(Main.Folder.get(i).getName())) {
-				 System.out.println("This is your searched file:" + Main.Folder.get(i));
+				 System.out.println("This is your searched file: [" + Main.Folder.get(i)+"]");
 				 SearchAgain();
 			 }
 			 
@@ -110,7 +106,6 @@ public class FilesSS {
 	 static void DelAgain() {
 		 System.out.println("do you stll want to delete a file?   (y/n)");
 		 String an = s.nextLine();
-		 
 		 switch(an) {
 		 case "y":
 			 DeleteFile();break;
@@ -129,15 +124,13 @@ public class FilesSS {
 			 AddFile();break;
 		 case "n":
 			 MainOptions();break;
-		 default : System.out.println("wrong input returning to the main options\n");MainOptions();break;
-			 
-		 }
-		 
+		 default : System.out.println("wrong input returning to the main options\n");MainOptions();break; 
+		 }	 
 	 }
 	 
 	 static void SearchAgain() {
 		 String an;
-		 System.out.println("do you want to search again?: ");
+		 System.out.println("do you want to search again?: (y/n)");
 		 an = s.nextLine();
 		 switch(an) {
 		 case "y":SearchFile();
@@ -145,8 +138,4 @@ public class FilesSS {
 		 case "n":MainOptions();
 		 break;
 		 default: System.out.println("wrong input returning to the main options\n");MainOptions();break;
-		 }
-	 }
-
-}
-
+		 		 }}}
